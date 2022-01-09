@@ -286,6 +286,7 @@ $RECYCLE.BIN/
 # Edit at https://www.toptal.com/developers/gitignore?templates=maven
 
 ### Maven ###
+.mvn/
 target/
 pom.xml.tag
 pom.xml.releaseBackup
