@@ -1,17 +1,15 @@
-package com.javierlobo.configserver;
+package com.javierlobo.loginmedummy.servicelogin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @EnableEurekaClient
-@EnableConfigServer
 @SpringBootApplication
-public class ConfigserverApplication {
+public class ServiceloginApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConfigserverApplication.class, args);
+		SpringApplication.run(ServiceloginApplication.class, args);
 	}
 
 }
