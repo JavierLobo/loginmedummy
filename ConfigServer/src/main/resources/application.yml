@@ -1,6 +1,10 @@
-server:
-  port: 8888
-
+info:
+  component: ConfigServer
+  
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    
 spring:
   application:
     name: ConfigServer
@@ -8,8 +12,20 @@ spring:
     config:
       server:
         git:
-          uri: file:///C:/Entorno/dev/GITHUB/LoginMeDummy/config
-          # 
-          # https://github.com/JavierLobo/loginmedummy/config
-profiles:
-  active: dev
+          uri: https://github.com/JavierLobo/loginmedummy
+          default-label: main
+          timeout: 4
+#          repos:
+##            simple: https://github.com/simple/config-repo
+#            special:
+#              pattern: special*/dev*,*special*/dev*
+#              uri: https://github.com/special/config-repo
+#            local:
+#              pattern: local*
+#              uri: file:///X:/dev/GITHUB/LoginMeDummy/servicelogin.properties
+
+server:
+  port: 8888
+
+#profiles:
+#  active: dev
