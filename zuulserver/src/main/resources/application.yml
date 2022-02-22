@@ -1,0 +1,17 @@
+#spring:
+#  application:
+#    name: ZuulServer
+#  cloud:
+#    config:
+#      uri:
+#      - http://localhost:8888
+#
+#eureka:
+#  instance:
+#    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
+#zuul:
+#  routes:
+#    servicelogin:
+#      path: /api/**
+#      url: http://localhost:8081/proxy/api

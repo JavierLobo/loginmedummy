@@ -1,10 +1,10 @@
-package com.javierlobo.loginmedummy.zuulserver;
+package com.javierlobo.loginmedummy.ZuulServer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ZuulserverApplicationTests {
+class ZuulServerApplicationTests {
 
 	@Test
 	void contextLoads() {
