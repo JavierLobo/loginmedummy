@@ -1,12 +1,13 @@
+info:
+  component: Servicio de login
+
 spring:
   application:
     name: servicelogin
   cloud:
     config:
-      uri:      - http://localhost:8888
-  
-info:
-  component: Servicio de login
+      uri: http://localhost:8888
+      fail-fast: true             #the service will not run if it can't reach the config-service
   
 server:
   port: 0
