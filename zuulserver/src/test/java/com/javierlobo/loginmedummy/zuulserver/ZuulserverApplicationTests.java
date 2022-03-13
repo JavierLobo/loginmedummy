@@ -1,4 +1,4 @@
-package com.javierlobo.loginmedummy.ZuulServer;
+package com.javierlobo.loginmedummy.zuulserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

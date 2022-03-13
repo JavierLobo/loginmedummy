@@ -1,4 +1,4 @@
-package com.javierlobo.loginmedummy.ZuulServer;
+package com.javierlobo.loginmedummy.zuulserver;
 
 import java.util.Enumeration;
 

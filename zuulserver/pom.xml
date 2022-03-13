@@ -11,7 +11,7 @@
 	</parent>
 	
 	<groupId>com.javierlobo.loginmedummy</groupId>
-	<artifactId>ZuulServer</artifactId>
+	<artifactId>zuulserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ZuulServer</name>
 	<description>Zuul Server Gateway</description>
