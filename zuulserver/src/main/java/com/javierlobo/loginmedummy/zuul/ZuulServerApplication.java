@@ -1,10 +1,14 @@
-package com.javierlobo.loginmedummy.zuulserver;
+package com.javierlobo.loginmedummy.zuul;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
+import org.springframework.context.annotation.Bean;
+
+import com.javierlobo.loginmedummy.zuul.filters.CustomFilter;
 
 @EnableZuulProxy
 @EnableEurekaClient
@@ -15,20 +19,26 @@ public class ZuulServerApplication extends SpringBootServletInitializer {
 		SpringApplication.run(ZuulServerApplication.class, args);
 	}
 
-//	@Bean
-//	public CustomFilter preFilter() {
-//		return new CustomFilter(FilterConstants.PRE_TYPE);
-//	}
-//	
-//	@Bean
-//	public CustomFilter postFilter() {
-//		return new CustomFilter(FilterConstants.POST_TYPE);
-//	}
-//	
-//	@Bean
-//	public CustomFilter errorFilter() {
-//		return new CustomFilter(FilterConstants.ERROR_TYPE);
-//	}
+	@Bean
+	public CustomFilter preFilter() {
+		return new CustomFilter(FilterConstants.PRE_TYPE, true);
+	}
+	
+	@Bean
+	public CustomFilter postFilter() {
+		return new CustomFilter(FilterConstants.POST_TYPE, true);
+	}
+	
+	@Bean
+	public CustomFilter errorFilter() {
+		return new CustomFilter(FilterConstants.ERROR_TYPE, true);
+	}
+	
+	@Bean
+	public CustomFilter routeFilter() {
+		return new CustomFilter(FilterConstants.ROUTE_TYPE, true);
+	}
+	
 }
 
 /*
