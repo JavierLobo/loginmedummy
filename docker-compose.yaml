@@ -1,0 +1,48 @@
+version: '3.7'
+services:
+  eureka-server:
+    container_name: EurekaServer
+    image: eurekaserver:0.0.1-SNAPSHOT
+    ports:
+      - "8761:8761"
+    networks:
+      - host
+    depends_on:
+      - config-server  # si tiene una configuracon que no dependa de config server se debe eliminar la dependencia
+
+  config-server:
+    container_name: ConfigServer
+    image: configserver:0.0.1-SNAPSHOT
+    ports:
+      - "8888"
+    networks:
+      - host
+#    depends_on:
+#      - eureka-server    # solo si eurekaserver no tiene una configuracion que dependa de configserver
+
+  zuul-server:
+    container_name: ZuulServer
+    image: zuulserver:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8089"
+    networks:
+      - host
+    depends_on:
+      - config-server
+      - eureka-server
+
+  service-server:
+    container_name: ServiceServer
+    image: servicelogin:0.0.1-SNAPSHOT
+    expose:
+      - "8005"
+    networks:
+      - host
+    depends_on:
+      - config-server
+      - eureka-server
+      - zuul-server
+
+networks:
+  default:
+  host:
