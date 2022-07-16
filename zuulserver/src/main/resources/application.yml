@@ -1,0 +1,46 @@
+info:
+  component: Servicio de ZuulServer
+ 
+spring:
+  application:
+    name: ZuulServer
+  cloud:
+    config:
+      uri: http://localhost:8888/gateway/system/
+      fail-fast: true             #the service will not run if it can't reach the config-service
+  main:
+    allow-circular-references: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
+server:
+  port: 8090
+ 
+zuul:
+  add-proxy-headers: true
+  ignored-services: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+  routes:
+    EurekaServer:
+      service-id: EurekaServer
+      path: /gateway/eureka/**
+      url: http://localhost:8761
+    ConfigServer:
+      service-id: ConfigServer
+      path: /gateway/config/**
+      url: http://localhost:8888
+    servicelogin:
+      service-id: servicelogin
+      path: /gateway/services/**
+      url: http://localhost:8005
+
+ribbon:
+  eureka:
+    enabled: false
