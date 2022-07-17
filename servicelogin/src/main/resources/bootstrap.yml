@@ -1,0 +1,28 @@
+info:
+  author: javierlobo
+  component:
+    name: Servicelogin
+    description: Servicio de login
+
+cloud:
+  services:
+    registrationMethod: route
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
+server:
+  port: 0
+
+spring:
+  application:
+    name: ${info.component.name} # servicelogin
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true             #the service will not run if it can't reach the config-service
+

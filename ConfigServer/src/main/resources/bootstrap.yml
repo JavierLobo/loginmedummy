@@ -1,0 +1,35 @@
+info:
+  component: ConfigServer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
+server:
+  port: 8888
+
+spring:
+  #  main:
+  #    banner-mode: off
+  #  profiles:
+  #    active: local
+  application:
+    name: ConfigServer
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/JavierLobo/loginmedummy
+          default-label: main
+          timeout: 4
+#          repos:
+##            simple: https://github.com/simple/config-repo
+#            special:
+#              pattern: special*/dev*,*special*/dev*
+#              uri: https://github.com/special/config-repo
+#            local:
+#              pattern: local*
+#              uri: file:///X:/dev/GITHUB/LoginMeDummy/servicelogin.properties

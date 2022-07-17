@@ -1,21 +1,22 @@
 info:
-  component: Servicio de login
+  component: Servicio de ZuulServer
 
 spring:
   application:
-    name: servicelogin
+    name: ZuulServer
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: http://localhost:8888/gateway/system/
       fail-fast: true             #the service will not run if it can't reach the config-service
-  
-server:
-  port: 0
+  main:
+    allow-circular-references: true
 
 eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
   instance:
     instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
 
-cloud:
-  services:
-    registrationMethod: route
+server:
+  port: 8090
